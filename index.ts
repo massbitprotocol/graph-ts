@@ -49,7 +49,6 @@ export class Block {
 }
 
 export class Header {
-  digest: any
   extrinsicsRoot: string
   parentHash: string
   hash: string

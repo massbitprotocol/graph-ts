@@ -345,14 +345,14 @@ export namespace substrate {
    */
   export class Tuple extends Array<Value> {}
 
-  export interface SubstrateBlock extends SignedBlock {
+  export class SubstrateBlock extends SignedBlock {
     // parent block's spec version, can be used to decide the correct metadata that should be used for this block.
     specVersion: number;
     timestamp: Date;
     events: EventRecord[];
   }
   
-  export interface SubstrateExtrinsic {
+  export class SubstrateExtrinsic {
     // index in the block
     idx: number;
     extrinsic: Extrinsic;
@@ -361,7 +361,7 @@ export namespace substrate {
     success: boolean;
   }
   
-  export interface SubstrateEvent extends EventRecord {
+  export class SubstrateEvent extends EventRecord {
     // index in the block
     idx: number;
     extrinsic: SubstrateExtrinsic;
