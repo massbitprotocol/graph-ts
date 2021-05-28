@@ -9,7 +9,12 @@
     "assemblyscript": "https://github.com/AssemblyScript/assemblyscript#36040d5b5312f19a025782b5e36663823494c2f3"
   },
   "devDependencies": {
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "@polkadot/api": "^4",
+    "@types/app-module-path": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@polkadot/api": "^4"
   },
   "scripts": {
     "test": "node test/test.js",

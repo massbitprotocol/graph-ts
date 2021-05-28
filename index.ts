@@ -4,6 +4,12 @@ import 'allocator/arena'
 // Ethereum support
 export * from './chain/ethereum'
 
+// Substrate support
+export * from './chain/substrate'
+
+
+// export {Extrinsic, EventRecord, SignedBlock} from '@polkadot/types/interfaces';
+
 /**
  * Host store interface.
  */
@@ -11,7 +17,54 @@ export declare namespace store {
   function get(entity: string, id: string): Entity | null
   function set(entity: string, id: string, data: Entity): void
   function remove(entity: string, id: string): void
+
+  //Add for Substrate
+  function getByField(entity: string, field: string, value): Entity | null
+  function getOneByField(entity: string, field: string, value): Entity | null
 }
+
+/** Host SignedBlock interface */
+
+// export class Struct {}
+// export class GenericExtrinsic {}
+// export class Codec {}
+// export class Option<T extends Codec> implements Codec{}
+// export class GenericBlock extends Struct {}
+// export class Block extends GenericBlock {}
+// export class SignedBlockWithJustifications extends Struct {
+//   block: Block
+//   justifications: Option<Justifications>}
+// export class SignedBlock extends SignedBlockWithJustifications {}
+// export class EventRecord extends Struct {}
+// export class Extrinsic extends GenericExtrinsic {}
+
+export class Block {
+  header: Header
+  contentHash: string
+  extrinsics: string
+  hash(): string {
+    return this.header.hash;
+    // return changetype<string>(this.header.hash as u32)
+  }
+}
+
+export class Header {
+  digest: any
+  extrinsicsRoot: string
+  parentHash: string
+  hash: string
+  number: string
+  stateRoot: string
+}
+
+export class SignedBlock {
+  block: Block
+  justifications: string
+}
+
+
+export class Extrinsic {args: string[]}
+export class EventRecord {}
 
 /** Host IPFS interface */
 export declare namespace ipfs {
