@@ -23,23 +23,11 @@ export declare namespace store {
   function getOneByField(entity: string, field: string, value): Entity | null
 }
 
-/** Host SignedBlock interface */
 
-// export class Struct {}
-// export class GenericExtrinsic {}
-// export class Codec {}
-// export class Option<T extends Codec> implements Codec{}
-// export class GenericBlock extends Struct {}
-// export class Block extends GenericBlock {}
-// export class SignedBlockWithJustifications extends Struct {
-//   block: Block
-//   justifications: Option<Justifications>}
-// export class SignedBlock extends SignedBlockWithJustifications {}
-// export class EventRecord extends Struct {}
-// export class Extrinsic extends GenericExtrinsic {}
 
 export class Block {
   header: Header
+  digest: DigestItem 
   contentHash: string
   extrinsics: string
   hash(): string {
@@ -56,14 +44,81 @@ export class Header {
   stateRoot: string
 }
 
+
+export class DigestItem {
+   isOther: boolean;
+   asOther: Bytes;
+   isAuthoritiesChange: boolean;
+   asAuthoritiesChange: string;
+   isChangesTrieRoot: boolean;
+   asChangesTrieRoot: string;
+   isSealV0: boolean;
+   asSealV0: string;
+   isConsensus: boolean;
+   asConsensus: string;
+   isSeal: boolean;
+   asSeal: string;
+   isPreRuntime: boolean;
+   asPreRuntime: string;
+   isChangesTrieSignal: boolean;
+   asChangesTrieSignal: string;
+}
+
 export class SignedBlock {
   block: Block
   justifications: string
 }
 
 
-export class Extrinsic {args: string[]}
-export class EventRecord {}
+export class Extrinsic {
+  args: string[];
+  argsDef: Uint8Array;
+  data: Uint8Array;
+  callIndex: Uint8Array;
+  encodedLength: number;
+  isSigned: boolean;
+  length: number;
+  // meta: FunctionMetadataLatest;
+  // nonce: Compact<Index>;
+  // ignature: EcdsaSignature | Ed25519Signature | Sr25519Signature;
+  // signer(): Address;
+  signer: string;
+  // tip: Compact<Balance>;
+  type: number;
+  version: number;
+}
+export class EventRecord {
+   phase: Phase;
+   event: Event;
+   topics: string[];
+}
+export class TypeDef {
+  alias: Map<string, string>;
+  // info: TypeDefInfo;
+  index: number;
+  displayName: string;
+  length: number;
+  name: string;
+  namespace: string;
+  // sub?: TypeDef | TypeDef[];
+  sub: TypeDef[];
+  type: string;
+}
+
+export class Event {
+  data: string;
+  index: string;
+  meta: string;
+  section: string;
+  typeDef: TypeDef[];
+}
+
+export class Phase {
+   isApplyExtrinsic: boolean;
+   asApplyExtrinsic: u32;
+   isFinalization: boolean;
+   isInitialization: boolean;
+}
 
 /** Host IPFS interface */
 export declare namespace ipfs {
