@@ -29,7 +29,7 @@ export class Block {
   header: Header
   digest: DigestItem 
   contentHash: string
-  extrinsics: string
+  extrinsics: Extrinsic[]
   hash(): string {
     return this.header.hash;
     // return changetype<string>(this.header.hash as u32)
@@ -40,7 +40,7 @@ export class Header {
   extrinsicsRoot: string
   parentHash: string
   hash: string
-  number: string
+  number: Value
   stateRoot: string
 }
 
@@ -83,6 +83,7 @@ export class Extrinsic {
   // ignature: EcdsaSignature | Ed25519Signature | Sr25519Signature;
   // signer(): Address;
   signer: string;
+  hash: string;
   // tip: Compact<Balance>;
   type: number;
   version: number;
