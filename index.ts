@@ -110,6 +110,7 @@ export class Event {
   data: string;
   index: string;
   meta: string;
+  account: string;
   section: string;
   typeDef: TypeDef[];
 }
