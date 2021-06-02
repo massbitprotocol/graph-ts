@@ -111,6 +111,7 @@ export class Event {
   index: string;
   meta: string;
   account: string;
+  newReward: Value;
   section: string;
   typeDef: TypeDef[];
 }
